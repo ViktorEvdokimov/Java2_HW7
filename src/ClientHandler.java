@@ -40,12 +40,14 @@ public class ClientHandler {
             if (strFromClient.startsWith("/w")){
                 String[] parts = strFromClient.split("\\s");
                 StringBuilder sb = new StringBuilder();
+                sb.append(name);
+                sb.append(" whisper you: ");
                 for (int i=2; i< parts.length; i++){
                     sb.append(parts[i]);
                     sb.append(" ");
                 }
                 sb.setLength(sb.length()-1);
-                if (server.privateMessage(parts[1], sb.toString())) sendMessage(name + " get your message.");
+                if (server.privateMessage(parts[1], sb.toString())) sendMessage(parts[1] + " get your message.");
                 else sendMessage("Incorrect private message.");
             } else if (strFromClient.equals("/end")) return;
             else server.broadcast(String.format("%s: %s", name, strFromClient));

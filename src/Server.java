@@ -30,7 +30,7 @@ public class Server {
     public synchronized  boolean privateMessage (String name, String message){
         for (ClientHandler client : clients){
             if (name.equals(client.getName())) {
-                client.sendMessage(String.format("%s whisper you: %s", name, message));
+                client.sendMessage(message);
                 return true;
             }
         }
